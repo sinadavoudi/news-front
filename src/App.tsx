@@ -34,7 +34,7 @@ function MainApp() {
     const fetchPDFs = async () => {
       setLoading(true);
       try {
-        const res = await fetch('http://localhost:8000/api/pdfs/');
+        const res = await fetch(`${process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000/api'}/pdfs/`);
         const data = await res.json();
         setPdfFiles(data);
       } catch (err) {

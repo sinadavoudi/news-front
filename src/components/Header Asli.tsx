@@ -36,7 +36,8 @@ const Header: React.FC<HeaderProps> = ({
   const pages = Array.from({ length: numPages }, (_, i) => i + 1);
   // Match by date, normalizing to YYYY-MM-DD
   const currentPDF = pdfFiles.find(pdf => pdf.date && pdf.date.slice(0, 10) === selectedDate.slice(0, 10));
-  const downloadUrl = currentPDF && currentPDF.pdf_file ? (currentPDF.pdf_file.startsWith('http') ? currentPDF.pdf_file : `http://localhost:8000${currentPDF.pdf_file}`) : undefined;
+  const apiBase = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const downloadUrl = currentPDF && currentPDF.pdf_file ? (currentPDF.pdf_file.startsWith('http') ? currentPDF.pdf_file : `${apiBase}${currentPDF.pdf_file}`) : undefined;
 
   // Debug logs
   console.log('selectedDate:', selectedDate);

@@ -56,7 +56,7 @@ const NewspaperViewer: React.FC<NewspaperViewerProps> = ({ currentPage, pdfFile,
       <div className="flex justify-center">
         <div className="bg-white shadow-lg">
           <img
-            src={currentPageImage.image.startsWith('http') ? currentPageImage.image : `http://localhost:8000${currentPageImage.image}`}
+            src={currentPageImage.image.startsWith('http') ? currentPageImage.image : `${process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000'}${currentPageImage.image}`}
             alt={`صفحه ${currentPage}`}
             className="w-full h-auto max-w-4xl"
             style={{ background: '#fff' }}

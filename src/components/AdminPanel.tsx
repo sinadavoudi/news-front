@@ -20,8 +20,8 @@ interface AdminPanelProps {
   token?: string;
 }
 
-const API_BASE = 'http://localhost:8000/api';
-const MEDIA_BASE = 'http://localhost:8000';
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000/api';
+const MEDIA_BASE = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
 
 const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, token }) => {
   const [selectedTitle, setSelectedTitle] = useState('');
