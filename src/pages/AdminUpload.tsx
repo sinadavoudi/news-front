@@ -13,7 +13,12 @@ function decodeJWT(token: string) {
     return null;
   }
 }
-
+useEffect(() => {
+  fetch(`${process.env.REACT_APP_API_BASE_URL}/health/`)
+    .then(res => res.json())
+    .then(data => console.log("✅ Backend working:", data))
+    .catch(err => console.error("❌ Backend error:", err));
+}, []);
 const AdminUpload: React.FC = () => {
   const [token, setToken] = useState<string | null>(localStorage.getItem('admin_jwt'));
   const [username, setUsername] = useState('');
